@@ -8,18 +8,30 @@ class Card:
         self.suit = s
         self.value = v
 
+    def get_value(self):
+        return self.value
+
+    def get_suit(self):
+        return self.suit
+
     def __str__(self):
         return self.value + self.suit
 
 
 class Hand:
-    def __init__(self, s1, v1, s2, v2):
-        self.first = Card(s1, v1)
-        self.second = Card(s2, v2)
+    def __init__(self, v1, s1, v2, s2):
+        self.first = Card(v1, s1)
+        self.second = Card(v2, s2)
         self.suited = s1 == s2
 
     def __str__(self):
         return self.first.__str__() + " " + self.second.__str__()
+
+    def get_type(self):
+        suited = "s"
+        if not self.suited:
+            suited = "o"
+        return self.first.get_value() + self.second.get_value() + suited
 
 
 class Player:
@@ -41,8 +53,14 @@ class Player:
     def set_hand(self, h):
         self.hand = h
 
+    def get_hand(self):
+        return self.hand
+
     def total_bets(self):
         return sum(self.bets)
+
+    def get_seat(self):
+        return self.seat
 
     def set_hand_result(self, result):
         self.hand_result = result
@@ -87,6 +105,13 @@ class HandHistory:
     PHASE_RIVER = 4
     PHASE_SUMMARY = 5
 
+    POSITION_DEALER = "Dealer"
+    POSITION_SMALL_BLIND = "Small Blind"
+    POSITION_BIG_BLIND = "Big Blind"
+    POSITION_UTG = "UTG"
+    POSITION_UGT_PLUS_1 = "UTG+1"
+    POSITION_UGT_PLUS_2 = "UTG+2"
+
     def __init__(self, c):
         self.content_string = c
         self.players = {}
@@ -99,6 +124,24 @@ class HandHistory:
         for k, player in self.players.items():
             ret += player.__str__() + "\n"
         return ret
+
+    def my_winnings(self):
+        for k, player in self.players.items():
+            if player.is_me:
+                return player.net_result()
+        raise Exception("Error retriving winnings")
+
+    def my_position(self):
+        for k, player in self.players.items():
+            if player.is_me:
+                return player.get_seat()
+        raise Exception("Error retriving seat")
+
+    def my_hand_type(self):
+        for k, player in self.players.items():
+            if player.is_me:
+                return player.get_hand().get_type()
+        raise Exception("Error retriving hand type")
 
     @staticmethod
     def is_phase_valid(phase):
@@ -205,7 +248,8 @@ class HandHistory:
 
         while len(queue) > 0:
             line = queue.popleft()
-            print(line)
+            # remove commas
+            line = line.replace(",", "")
             count += 1
 
             # header
