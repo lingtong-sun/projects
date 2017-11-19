@@ -3,6 +3,8 @@ The hand formats are standard and can be viewed in the hand_history folder.
 Essentially, relies on regex and a big loop to yank out the important information. 
 Made a few graphs for reference. 
 
+Most of the code is in handparser.py and models.py.
+
 #TODOS:
 1. Analyze without blinds.
 2. Come up with some features and analyze those.
