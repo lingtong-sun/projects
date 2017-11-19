@@ -2,9 +2,7 @@ Ignition Hand #3480433069  Zone Poker ID#1169 HOLDEMZonePoker No Limit - 2017-07
 Seat 1: Dealer ($149.72 in chips)
 Seat 2: Small Blind ($174.68 in chips)
 Seat 3: Big Blind [ME] ($100 in chips)
-Dealer : Set dealer [1] 
-Small Blind : Small Blind $0.50 
-Big Blind  [ME] : Big blind $1 
+Big Blind  [ME] : Big blind $1
 *** HOLE CARDS ***
 Dealer : Card dealt to a spot [Kh 8s] 
 Small Blind : Card dealt to a spot [8d Jd] 

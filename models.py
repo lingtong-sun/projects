@@ -4,7 +4,7 @@ import re
 
 
 class Card:
-    def __init__(self, s, v):
+    def __init__(self, v, s):
         self.suit = s
         self.value = v
 
@@ -23,15 +23,36 @@ class Hand:
 
 
 class Player:
+    ROUND_PREFLOP = 0
+    ROUND_FLOP = 1
+    ROUND_TURN = 2
+    ROUND_RIVER = 3
+
     def __init__(self, s, p, is_me):
         self.stack = s
         self.seat = p
         self.position = determine_position(p)
         self.hand = None
         self.is_me = is_me
+        self.hand_winning = 0
+        # preflop, flop, turn, river
+        self.bets = [0, 0, 0, 0]
 
     def set_hand(self, h):
         self.hand = h
+
+    def total_bets(self):
+        return sum(self.bets)
+
+    def bet(self, r, amount):
+        if r < Player.ROUND_PREFLOP or r > Player.ROUND_RIVER:
+            raise Exception("Invalid betting detected.")
+        self.bets[r] += amount
+
+    def bet_to(self, r, amount):
+        if r < Player.ROUND_PREFLOP or r > Player.ROUND_RIVER:
+            raise Exception("Invalid betting detected.")
+        self.bets[r] = amount
 
     def __str__(self):
         return self.seat + "($" + self.stack + "): " + self.hand.__str__()
@@ -40,10 +61,15 @@ class Player:
 class HandHistory:
     REGEX_TITLE = "^Ignition Hand #([0-9]{10})"
     REGEX_PHASE = "^\*\*\* ([A-Z ]*) \*\*\*$"
-    REGEX_SEAT = "(Dealer|Small Blind|Big Blind|UTG|UTG\\+1|UTG\\+2) (\\[ME\\] )?"
-    REGEX_SEATING = "^Seat [0-9]: " + REGEX_SEAT + "\\(\\$(\\d+(\\.\\d{1,2})?) in chips\\)$"
+    REGEX_SEAT = "(Dealer|Small Blind|Big Blind|UTG|UTG\\+1|UTG\\+2) ( ?\\[ME\\] )?"
+    REGEX_MONEY = "\\$(\\d+(\\.\\d{1,2})?)"
+    REGEX_SEATING = "^Seat [0-9]: " + REGEX_SEAT + "\\(" + REGEX_MONEY + " in chips\\)$"
     REGEX_CARD = "([2-9TJQKA][sdhc])"
     REGEX_HC = "^" + REGEX_SEAT + ": Card dealt to a spot \\[" + REGEX_CARD + " " + REGEX_CARD + "\\] $"
+    REGEX_MOVE = "(Small Blind|Big Blind|Calls|Bets|Raises)"
+    REGEX_ACTION = "^" + REGEX_SEAT + ": " + REGEX_MOVE 
+    REGEX_OTHER_ACTIONS = "^.*(Folds|Leave|Checks|Enter|Set dealer).*"
+    REGEX_RETURN = "^" + REGEX_SEAT + ": Return uncalled portion of bet " + REGEX_MONEY
     PHASES = ["INITIAL", "HOLE CARDS", "FLOP", "TURN", "RIVER", "SUMMARY"]
 
     PHASE_INITIAL = 0
@@ -65,6 +91,92 @@ class HandHistory:
             return False
         return True
 
+    def parse_header(self, line):
+        # header
+        rx_matcher = re.compile(HandHistory.REGEX_TITLE)
+        self.hand_number = rx_matcher.match(line).group(1)
+        if self.hand_number is None:
+            raise Exception("Failed to parse hand number")
+
+    def parse_phase_header(self, curr_phase, line):
+        # hand phase headers (flop, turn, river, etc)
+        phase_header = re.match(HandHistory.REGEX_PHASE, line)
+        if phase_header is not None:
+            phase_str = phase_header.group(1)
+            # find the current phase at the signal
+            new_phase = HandHistory.PHASES.index(phase_str)
+            if not self.is_phase_valid(new_phase):
+                raise Exception("Failed to parse hand phase")
+            print(phase_str + ": " + str(new_phase))
+            return new_phase
+        return curr_phase
+
+    def parse_seating(self, line):
+        rx_matcher = re.compile(HandHistory.REGEX_SEATING)
+        match_obj = rx_matcher.match(line)
+
+        # seating
+        if match_obj is not None:
+            position = match_obj.group(1)
+            is_me = match_obj.group(2)
+            stack = match_obj.group(3)
+            player = Player(stack, position, is_me is not None)
+            print(player)
+            self.players[position] = player
+            return True
+        return False
+
+    def parse_dealing(self, line):
+        hc_matcher = re.compile(HandHistory.REGEX_HC)
+        match_obj = hc_matcher.match(line)
+
+        if match_obj is not None:
+            position = match_obj.group(1)
+            is_me = match_obj.group(2)
+            first = match_obj.group(3)
+            second = match_obj.group(4)
+            print (position)
+            player = self.players.get(position)
+            player.hand = Hand(first[0], first[1], second[0], second[1])
+            print(player.hand)
+            return True
+        return False
+
+    def parse_action(self, line, curr_phase):
+        print(line)
+        # align parse phasing with betting round
+        r = curr_phase - 1
+        if r < 0:
+            r = 0
+
+        action_matcher = re.compile(HandHistory.REGEX_ACTION)
+        match_obj = action_matcher.match(line)
+
+        if match_obj is not None:
+            position = match_obj.group(1)
+            is_me = match_obj.group(2)
+            action = match_obj.group(3)
+            amount = match_obj.group(4)
+            player = self.players.get(position)
+            player.bet(r, float(amount))
+            return
+
+        return_matcher = re.compile(HandHistory.REGEX_RETURN)
+        match_obj = return_matcher.match(line)
+        if match_obj is not None:
+            position = match_obj.group(1)
+            is_me = match_obj.group(2)
+            amount = match_obj.group(4)
+            player = self.players.get(position)
+            player.bet(r, -float(amount))
+            return
+
+        nonaction_matcher = re.compile(HandHistory.REGEX_OTHER_ACTIONS)
+        if nonaction_matcher.match(line) is not None:
+            return
+
+        raise Exception("Unexpect parsing error during action.")
+
     def parse(self):
         input = self.content_string.split('\n')
         queue = deque(input)
@@ -77,53 +189,31 @@ class HandHistory:
 
             # header
             if count == 1:
-                rx_matcher = re.compile(HandHistory.REGEX_TITLE)
-                self.hand_number = rx_matcher.match(line).group(1)
-                if self.hand_number is None:
-                    raise Exception("Failed to parse hand number")
-                print("=== " + self.hand_number)
+                self.parse_header(line)
                 continue
 
-            # hand phase headers (flop, turn, river, etc)
-            phase_header = re.match(HandHistory.REGEX_PHASE, line)
-            if phase_header is not None:
-                phase_str = phase_header.group(1)
-                # find the current phase at the signal
-                curr_phase = HandHistory.PHASES.index(phase_str)
-                if not self.is_phase_valid(curr_phase):
-                    raise Exception("Failed to parse hand phase")
-                print(phase_str + ": " + str(curr_phase))
+            new_phase = self.parse_phase_header(curr_phase, line)
+            if new_phase != curr_phase:
+                curr_phase = new_phase
                 continue
 
             if curr_phase == HandHistory.PHASE_INITIAL:
-                rx_matcher = re.compile(HandHistory.REGEX_SEATING)
-                match_obj = rx_matcher.match(line)
-
-                # seating
-                if match_obj is not None:
-                    position = match_obj.group(1)
-                    is_me = match_obj.group(2)
-                    stack = match_obj.group(3)
-                    player = Player(stack, position, is_me is not None)
-                    print(player)
-                    self.players[position] = player
+                if self.parse_seating(line):
                     continue
                 # parse action(blind info) later
+                self.parse_action(line, curr_phase)
+                continue
 
-            print(curr_phase)
             if curr_phase == HandHistory.PHASE_HC:
-                hc_matcher = re.compile(HandHistory.REGEX_HC)
-                print(line)
-                match_obj = hc_matcher.match(line)
+                if self.parse_dealing(line):
+                    continue
+                self.parse_action(line, curr_phase)
+                # parse action
 
-                if match_obj is not None:
-                    print ("hi")
+            if curr_phase == HandHistory.PHASE_FLOP or curr_phase == HandHistory.PHASE_TURN or curr_phase == HandHistory.PHASE_RIVER:
+                self.parse_action(line, curr_phase)
 
-                    position = match_obj.group(1)
-                    first = match_obj.group(2)
-                    second = match_obj.group(3)
-                    print (position)
-                    print (first + ", " + second)
-                    player = self.players.get(position)
-                    player.hand = Hand(first[0], first[1], second[0], second[1])
-                    print(player.hand)
+            if curr_phase == HandHistory.PHASE_SUMMARY:
+                #do something
+                continue
+

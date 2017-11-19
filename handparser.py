@@ -3,10 +3,11 @@ from os import listdir
 from os.path import isfile, join
 from models import Hand, Card, Player, HandHistory
 
-hand_history_path = "/Users/lingtongsun/code/poker/hand_history/"
+hand_history_path = "/Users/lingtongsun/code/poker/hand_history/ignition/0.5-1/"
 hand_history_files = [f for f in listdir(hand_history_path) if isfile(join(hand_history_path, f))]
 
 hands = []
+
 def parse(content, hands):
     temp_hands = content.split("\n\n")
     for hand in temp_hands:

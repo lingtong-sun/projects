@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/models.py" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5fabfc7f-7f87-4f13-ba0d-163ab21a2d3a" name="Default" comment="" />
     <ignored path="poker.iws" />
@@ -23,8 +26,8 @@
       <file leaf-file-name="handparser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handparser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
               <folding>
                 <element signature="e#1#23#0" expanded="true" />
               </folding>
@@ -35,11 +38,31 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state relative-caret-position="220">
+              <caret line="69" column="56" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HH20170714-024026 - 952119 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-024026 - 952119 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1605">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,26 +77,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hand_history/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HH20170714-045436 - 952129 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hand_history/HH20170714-045436 - 952129 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="IdeDocumentHistory">
@@ -82,6 +85,7 @@
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/hand.py" />
         <option value="$PROJECT_DIR$/handparser.py" />
+        <option value="$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt" />
         <option value="$PROJECT_DIR$/models.py" />
       </list>
     </option>
@@ -150,18 +154,48 @@
               <option name="myItemId" value="hand_history" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ignition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="poker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="poker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hand_history" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ignition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="0.5-1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../cs145/cs145-2017-internal" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hand_history/ignition/0.5-1" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hand_history/ignition/1-2" />
       <recent name="$PROJECT_DIR$/hand_history" />
     </key>
   </component>
@@ -172,9 +206,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="poker" />
@@ -341,7 +375,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="40" y="23" width="1400" height="767" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -353,7 +387,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39971346" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39971346" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -397,16 +431,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/models.py</url>
-          <line>114</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/models.py</url>
-          <line>112</line>
-          <option name="timeStamp" value="8" />
+          <line>145</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -439,7 +468,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30675">
           <caret line="2045" column="38" selection-start-line="2045" selection-start-column="38" selection-end-line="2045" selection-end-column="38" />
@@ -447,7 +476,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170714-024026 - 952120 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-024026 - 952120 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
@@ -483,7 +512,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30675">
           <caret line="2045" column="38" selection-start-line="2045" selection-start-column="38" selection-end-line="2045" selection-end-column="38" />
@@ -491,7 +520,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170714-024026 - 952120 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-024026 - 952120 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
@@ -527,7 +556,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30675">
           <caret line="2045" column="38" selection-start-line="2045" selection-start-column="38" selection-end-line="2045" selection-end-column="38" />
@@ -535,7 +564,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170714-024026 - 952120 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-024026 - 952120 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
@@ -543,7 +572,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170714-024026 - 952120 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-024026 - 952120 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
@@ -551,7 +580,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170714-045436 - 952129 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-045436 - 952129 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
@@ -567,6 +596,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/1-2/14058473/HH20171003-014030 - 1037225 - ZONE - $1-$2 - HOLDEMZonePoker - NL - ZonePoker No.1214.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-032755 - 952123 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170713-095857 - 952113 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170713-234954 - 952118 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-131447 - 952143 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-135818 - 952147 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -575,28 +652,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/1-2/HH20171003-014030 - 1037225 - ZONE - $1-$2 - HOLDEMZonePoker - NL - ZonePoker No.1214.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170714-024026 - 952119 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1605">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/handparser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="240">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding>
             <element signature="e#1#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand_history/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
+    <entry file="file://$PROJECT_DIR$/hand_history/ignition/0.5-1/HH20170713-095857 - 952112 - ZONE - $0.50-$1 - HOLDEMZonePoker - NL - ZonePoker No.1169.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="220">
+          <caret line="69" column="56" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
