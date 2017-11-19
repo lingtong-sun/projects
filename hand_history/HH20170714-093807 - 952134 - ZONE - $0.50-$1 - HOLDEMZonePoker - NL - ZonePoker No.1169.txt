@@ -1,0 +1,109 @@
+Ignition Hand #3480780442  Zone Poker ID#1169 HOLDEMZonePoker No Limit - 2017-07-14 09:38:12
+Seat 1: Big Blind [ME] ($100 in chips)
+Seat 2: Dealer ($353.29 in chips)
+Seat 3: Small Blind ($134.75 in chips)
+Dealer : Set dealer [2] 
+Small Blind : Small Blind $0.50 
+Big Blind  [ME] : Big blind $1 
+*** HOLE CARDS ***
+Big Blind  [ME] : Card dealt to a spot [3c Qs] 
+Dealer : Card dealt to a spot [Kh 6s] 
+Small Blind : Card dealt to a spot [9s Ah] 
+Dealer : Folds
+Dealer : Leave(Auto)
+Small Blind : Raises $2.50 to $3
+Big Blind  [ME] : Calls $2 
+*** FLOP *** [3h 2d Js]
+Small Blind : Checks
+Big Blind  [ME] : Bets $3 
+Small Blind : Calls $3 
+*** TURN *** [3h 2d Js] [6h]
+Small Blind : Checks
+Big Blind  [ME] : Bets $6 
+Small Blind : Calls $6 
+*** RIVER *** [3h 2d Js 6h] [Qh]
+Small Blind : Checks
+Big Blind  [ME] : Bets $21 
+Small Blind : Calls $21 
+Big Blind  [ME] : Showdown [Qs Qh 3h 3c Js] (Two pair)
+Small Blind : Mucks [9s Ah] (High Card)
+Big Blind  [ME] : Hand result $64 
+Small Blind : Seat stand
+Small Blind : Table leave user
+Big Blind  [ME] : Leave(Auto)
+Enter(Auto)
+Big Blind  [ME] : Enter(Auto)
+Enter(Auto)
+*** SUMMARY ***
+Total Pot($66)
+Board [3h 2d Js 6h Qh]
+Seat+1: Big Blind $64  with Two pair [3c Qs-Qs Qh 3h 3c Js]  
+Seat+2: Dealer Folded before the RIVER
+Seat+3: Small Blind [Mucked] [9s Ah]  
+
+
+Ignition Hand #3480780562  Zone Poker ID#1169 HOLDEMZonePoker No Limit - 2017-07-14 09:39:16
+Seat 1: Small Blind [ME] ($131 in chips)
+Seat 2: Big Blind ($104.60 in chips)
+Seat 3: Dealer ($353.79 in chips)
+Dealer : Set dealer [3] 
+Small Blind  [ME] : Small Blind $0.50 
+Big Blind : Big blind $1 
+*** HOLE CARDS ***
+Small Blind  [ME] : Card dealt to a spot [2s 3d] 
+Big Blind : Card dealt to a spot [7c Th] 
+Dealer : Card dealt to a spot [8h 8s] 
+Dealer : Raises $3 to $3
+Small Blind  [ME] : Folds
+Small Blind  [ME] : Leave(Auto)
+Big Blind : Folds
+Big Blind : Leave(Auto)
+Dealer : Return uncalled portion of bet $2 
+Dealer : Does not show [8h 8s] (High Card)
+Dealer : Hand result $2.50 
+Dealer : Leave(Auto)
+Enter(Auto)
+Enter(Auto)
+Enter(Auto)
+*** SUMMARY ***
+Total Pot($2.50)
+Seat+1: Small Blind Folded before the RIVER
+Seat+2: Big Blind Folded before the RIVER
+Seat+3: Dealer $2.50 [Does not show]  
+
+
+Ignition Hand #3480780586  Zone Poker ID#1169 HOLDEMZonePoker No Limit - 2017-07-14 09:39:25
+Seat 1: Small Blind ($118.50 in chips)
+Seat 2: Big Blind ($33.30 in chips)
+Seat 3: Dealer [ME] ($130.50 in chips)
+Dealer  [ME] : Set dealer [3] 
+Small Blind : Small Blind $0.50 
+Big Blind : Big blind $1 
+*** HOLE CARDS ***
+Small Blind : Card dealt to a spot [Js 2c] 
+Big Blind : Card dealt to a spot [8h Jd] 
+Dealer  [ME] : Card dealt to a spot [Tc Kh] 
+Big Blind : Leave(Auto)
+Dealer  [ME] : Raises $3 to $3
+Small Blind : Folds
+Small Blind : Leave(Auto)
+Big Blind : Folds
+Dealer  [ME] : Return uncalled portion of bet $2 
+Dealer  [ME] : Does not show [Tc Kh] (High Card)
+Dealer  [ME] : Hand result $2.50 
+Dealer  [ME] : Leave(Auto)
+Dealer  [ME] : Enter(Auto)
+Big Blind : Enter(Auto)
+Enter(Auto)
+Dealer  [ME] : Seat sit out
+Dealer  [ME] : Leave(Auto)
+Dealer  [ME] : Enter(Auto)
+Dealer  [ME] : Seat sit out
+Dealer  [ME] : Leave(Auto)
+Small Blind : Enter(Auto)
+*** SUMMARY ***
+Total Pot($2.50)
+Seat+1: Small Blind Folded before the RIVER
+Seat+2: Big Blind lost with High Card [8h Jd]  
+Seat+3: Dealer $2.50 [Does not show]  
+
