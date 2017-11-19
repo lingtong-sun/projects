@@ -34,7 +34,7 @@ class Player:
         self.position = determine_position(p)
         self.hand = None
         self.is_me = is_me
-        self.hand_winning = 0
+        self.hand_result = 0.0
         # preflop, flop, turn, river
         self.bets = [0, 0, 0, 0]
 
@@ -43,6 +43,9 @@ class Player:
 
     def total_bets(self):
         return sum(self.bets)
+
+    def set_hand_result(self, result):
+        self.hand_result = result
 
     def bet(self, r, amount):
         if r < Player.ROUND_PREFLOP or r > Player.ROUND_RIVER:
@@ -54,22 +57,27 @@ class Player:
             raise Exception("Invalid betting detected.")
         self.bets[r] = amount
 
+    def net_result(self):
+        return float(self.hand_result) - self.total_bets()
+
     def __str__(self):
-        return self.seat + "($" + self.stack + "): " + self.hand.__str__()
+        return self.seat + "($" + str(self.stack) + "): " + self.hand.__str__() + " ==> $" + str(self.net_result())
 
 
 class HandHistory:
     REGEX_TITLE = "^Ignition Hand #([0-9]{10})"
-    REGEX_PHASE = "^\*\*\* ([A-Z ]*) \*\*\*$"
+    REGEX_PHASE = "^\*\*\* ([A-Z ]*) \*\*\*"
     REGEX_SEAT = "(Dealer|Small Blind|Big Blind|UTG|UTG\\+1|UTG\\+2) ( ?\\[ME\\] )?"
     REGEX_MONEY = "\\$(\\d+(\\.\\d{1,2})?)"
     REGEX_SEATING = "^Seat [0-9]: " + REGEX_SEAT + "\\(" + REGEX_MONEY + " in chips\\)$"
     REGEX_CARD = "([2-9TJQKA][sdhc])"
     REGEX_HC = "^" + REGEX_SEAT + ": Card dealt to a spot \\[" + REGEX_CARD + " " + REGEX_CARD + "\\] $"
-    REGEX_MOVE = "(Small Blind|Big Blind|Calls|Bets|Raises)"
-    REGEX_ACTION = "^" + REGEX_SEAT + ": " + REGEX_MOVE 
-    REGEX_OTHER_ACTIONS = "^.*(Folds|Leave|Checks|Enter|Set dealer).*"
+    REGEX_MOVE = "(Small Blind|Big [bB]lind|Calls|Bets|Raises|All-in|All-in\\(raise\\))"
+    REGEX_ACTION = "^" + REGEX_SEAT + ": " + REGEX_MOVE + " " + REGEX_MONEY
+    REGEX_OTHER_ACTIONS = "^.*(Folds|[Ll]eave|Checks|[Ee]nter|Set dealer|[Dd]eposit|Does not show|Showdown|" \
+                          "sit out|re-join|stand|[Mm]ucks).*"
     REGEX_RETURN = "^" + REGEX_SEAT + ": Return uncalled portion of bet " + REGEX_MONEY
+    REGEX_RESULT = "^" + REGEX_SEAT + ": (Hand result|Hand result-Side pot) " + REGEX_MONEY
     PHASES = ["INITIAL", "HOLE CARDS", "FLOP", "TURN", "RIVER", "SUMMARY"]
 
     PHASE_INITIAL = 0
@@ -84,6 +92,13 @@ class HandHistory:
         self.players = {}
         self.hand_number = None
         self.parse()
+        self.sanity_check()
+
+    def __str__(self):
+        ret = ""
+        for k, player in self.players.items():
+            ret += player.__str__() + "\n"
+        return ret
 
     @staticmethod
     def is_phase_valid(phase):
@@ -107,7 +122,6 @@ class HandHistory:
             new_phase = HandHistory.PHASES.index(phase_str)
             if not self.is_phase_valid(new_phase):
                 raise Exception("Failed to parse hand phase")
-            print(phase_str + ": " + str(new_phase))
             return new_phase
         return curr_phase
 
@@ -121,7 +135,6 @@ class HandHistory:
             is_me = match_obj.group(2)
             stack = match_obj.group(3)
             player = Player(stack, position, is_me is not None)
-            print(player)
             self.players[position] = player
             return True
         return False
@@ -135,15 +148,12 @@ class HandHistory:
             is_me = match_obj.group(2)
             first = match_obj.group(3)
             second = match_obj.group(4)
-            print (position)
             player = self.players.get(position)
             player.hand = Hand(first[0], first[1], second[0], second[1])
-            print(player.hand)
             return True
         return False
 
     def parse_action(self, line, curr_phase):
-        print(line)
         # align parse phasing with betting round
         r = curr_phase - 1
         if r < 0:
@@ -166,13 +176,23 @@ class HandHistory:
         if match_obj is not None:
             position = match_obj.group(1)
             is_me = match_obj.group(2)
-            amount = match_obj.group(4)
+            amount = match_obj.group(3)
             player = self.players.get(position)
             player.bet(r, -float(amount))
             return
 
         nonaction_matcher = re.compile(HandHistory.REGEX_OTHER_ACTIONS)
         if nonaction_matcher.match(line) is not None:
+            return
+
+        result_matcher = re.compile(HandHistory.REGEX_RESULT)
+        match_obj = result_matcher.match(line)
+        if match_obj is not None:
+            position = match_obj.group(1)
+            is_me = match_obj.group(2)
+            result = match_obj.group(4)
+            player = self.players.get(position)
+            player.set_hand_result(result)
             return
 
         raise Exception("Unexpect parsing error during action.")
@@ -185,6 +205,7 @@ class HandHistory:
 
         while len(queue) > 0:
             line = queue.popleft()
+            print(line)
             count += 1
 
             # header
@@ -217,3 +238,11 @@ class HandHistory:
                 #do something
                 continue
 
+    def sanity_check(self):
+        total = 0
+        totalpot = 0
+        for k, player in self.players.items():
+            total += player.net_result()
+            totalpot += abs(player.net_result())
+        if total > totalpot * 0.05:
+            raise Exception("Sanity Check Failed.")
