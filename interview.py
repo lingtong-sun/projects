@@ -4,6 +4,7 @@ arr2 = [1, 2, 3, 4, 5, 6, None, 7, 8, None, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 arr3 = [1, None, None, 2, 3, 4]
 arr4 = [1, None, 2, 3, 4, 5, None, 6, 7, 8, None, 9, 10]
 
+
 class Node:
     def __init__(self, value, next_node, lc, rc, parent):
         self.next_node = next_node
@@ -21,7 +22,7 @@ def print_tree(root):
     while thislevel:
         nextlevel = list()
         for n in thislevel:
-            # print(n.value, " ", end="")
+            print(n.value, " ", end="")
             if n.left_child: nextlevel.append(n.left_child)
             if n.right_child: nextlevel.append(n.right_child)
         print ("\n")
@@ -44,26 +45,44 @@ def parse(input_array):
 
         if curr is None:
             raise Exception("Invalid input provided")
-        print("curr:" + str(curr))
 
         if curr.left_child is None:
             curr.left_child = new_node
-            print(" left")
         elif curr.right_child is None:
-            print(" right")
             curr.right_child = new_node
 
-        print("     last placed:" + str(last_placed))
         if new_node.value is not None:
             last_placed.next_node = new_node
             last_placed = new_node
 
         if curr.right_child is not None:
-            print(" currNext:" + str(curr.next_node))
             curr = curr.next_node
 
     return root
 
+def spiral_traverse(root):
+    thislevel = [root]
+    level = 0
+    while thislevel:
+        nextlevel = list()
+        printList = thislevel
+        if level % 2 == 1:
+            printList = reversed(thislevel)
+
+        for n in printList:
+            print(n.value)
+
+        for n in thislevel:
+            if n.left_child: nextlevel.append(n.left_child)
+            if n.right_child: nextlevel.append(n.right_child)
+        thislevel = nextlevel
+        level += 1
+
+def print_in_order(root):
+    while root is not None:
+        print(root.value)
+        root = root.next_node
 
 root = parse(arr4)
 print_tree(root=root)
+spiral_traverse(root)

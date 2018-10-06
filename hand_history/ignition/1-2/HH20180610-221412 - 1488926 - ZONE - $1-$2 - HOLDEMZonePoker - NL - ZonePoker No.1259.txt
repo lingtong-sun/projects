@@ -1,0 +1,93 @@
+Ignition Hand #3616118514  Zone Poker ID#1259 HOLDEMZonePoker No Limit - 2018-06-10 22:14:14
+Seat 1: UTG+2 ($256.50 in chips)
+Seat 2: Dealer ($367.20 in chips)
+Seat 3: Small Blind ($68.45 in chips)
+Seat 4: Big Blind [ME] ($200 in chips)
+Seat 5: UTG ($232.65 in chips)
+Seat 6: UTG+1 ($198 in chips)
+Dealer : Set dealer [2] 
+Small Blind : Small Blind $1 
+Big Blind  [ME] : Big blind $2 
+*** HOLE CARDS ***
+UTG+2 : Card dealt to a spot [Jc 8h] 
+Dealer : Card dealt to a spot [8d As] 
+Small Blind : Card dealt to a spot [4s 5s] 
+Big Blind  [ME] : Card dealt to a spot [3s 7s] 
+UTG : Card dealt to a spot [7d 4h] 
+UTG+1 : Card dealt to a spot [Kh 3c] 
+Small Blind : Leave(Auto)
+UTG+2 : Leave(Auto)
+UTG : Folds
+UTG : Leave(Auto)
+UTG+1 : Folds
+UTG+1 : Leave(Auto)
+UTG+2 : Folds
+Dealer : Raises $6 to $6
+Small Blind : Folds
+Big Blind  [ME] : Folds
+Big Blind  [ME] : Leave(Auto)
+Dealer : Return uncalled portion of bet $4 
+Dealer : Does not show [8d As] (High Card)
+Dealer : Hand result $5 
+Dealer : Leave(Auto)
+UTG : Enter(Auto)
+Dealer : Enter(Auto)
+Enter(Auto)
+Enter(Auto)
+Enter(Auto)
+Enter(Auto)
+*** SUMMARY ***
+
+
+Ignition Hand #3616118624  Zone Poker ID#1259 HOLDEMZonePoker No Limit - 2018-06-10 22:14:29
+Seat 1: UTG+2 ($190.70 in chips)
+Seat 2: Dealer ($197 in chips)
+Seat 3: Small Blind ($85.17 in chips)
+Seat 4: Big Blind ($690.85 in chips)
+Seat 5: UTG [ME] ($198 in chips)
+Seat 6: UTG+1 ($363.65 in chips)
+Dealer : Set dealer [2] 
+Small Blind : Small Blind $1 
+Big Blind : Big blind $2 
+*** HOLE CARDS ***
+UTG+2 : Card dealt to a spot [7d 9c] 
+Dealer : Card dealt to a spot [Kc 4c] 
+Small Blind : Card dealt to a spot [Qs Ts] 
+Big Blind : Card dealt to a spot [Ad Qc] 
+UTG  [ME] : Card dealt to a spot [Qh Jh] 
+UTG+1 : Card dealt to a spot [5d Kh] 
+UTG  [ME] : Raises $5 to $5
+UTG+1 : Folds
+UTG+1 : Leave(Auto)
+Dealer : Leave(Auto)
+Small Blind : Leave(Auto)
+UTG+2 : Folds
+UTG+2 : Leave(Auto)
+Dealer : Folds
+Small Blind : Folds
+Big Blind : Raises $18 to $20
+UTG  [ME] : Calls $15 
+*** FLOP *** [2s 5h Qd]
+Big Blind : Bets $25 
+UTG  [ME] : Calls $25 
+*** TURN *** [2s 5h Qd] [7c]
+Big Blind : Bets $60 
+UTG  [ME] : Calls $60 
+*** RIVER *** [2s 5h Qd 7c] [Ks]
+Big Blind : Bets $211 
+UTG  [ME] : All-in $93 
+Big Blind : Return uncalled portion of bet $118 
+Big Blind : Showdown [Qd Qc Ad Ks 7c] (One pair)
+UTG  [ME] : Mucks [Qh Jh] (One pair)
+Big Blind : Hand result $393 
+UTG  [ME] : Seat sit out
+UTG  [ME] : Leave(Auto)
+Big Blind : Leave(Auto)
+Enter(Auto)
+Enter(Auto)
+Enter(Auto)
+Enter(Auto)
+Enter(Auto)
+Enter(Auto)
+*** SUMMARY ***
+

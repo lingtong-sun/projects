@@ -4,6 +4,7 @@ import re
 
 
 class Card:
+    CARD_VALUE = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
     def __init__(self, v, s):
         self.suit = s
         self.value = v
@@ -20,9 +21,19 @@ class Card:
 
 class Hand:
     def __init__(self, v1, s1, v2, s2):
-        self.first = Card(v1, s1)
-        self.second = Card(v2, s2)
+        if Card.CARD_VALUE.index(v1) < Card.CARD_VALUE.index(v2):
+            self.first = Card(v1, s1)
+            self.second = Card(v2, s2)
+        elif Card.CARD_VALUE.index(v1) > Card.CARD_VALUE.index(v2):
+            self.second = Card(v1, s1)
+            self.first = Card(v2, s2)
+        else:
+            self.first = Card(v1, s1)
+            self.second = Card(v2, s2)
+
         self.suited = s1 == s2
+
+
 
     def __str__(self):
         return self.first.__str__() + " " + self.second.__str__()
@@ -114,6 +125,7 @@ class HandHistory:
 
     def __init__(self, c):
         self.content_string = c
+        self.well_formed = True
         self.players = {}
         self.hand_number = None
         self.parse()
@@ -238,6 +250,7 @@ class HandHistory:
             player.set_hand_result(result)
             return
 
+        self.well_formed = False
         raise Exception("Unexpect parsing error during action.")
 
     def parse(self):
