@@ -6,6 +6,30 @@ import time
 from lake_envs import *
 
 np.set_printoptions(precision=3)
+PROBABILITY = 0
+NEXT_STATE = 1
+REWARD = 2
+TERMINAL =  3
+
+
+def get_future_rewards(P, s, a, value_function_k_minus_1):
+	next_states = P[s][a]
+	reward = 0
+	for next_state in next_states:
+		# reward += prob s' | s, pi(s) of Vpi k-1
+		reward += next_state[PROBABILITY] * value_function_k_minus_1[next_state[NEXT_STATE]]
+
+	return reward
+
+
+def get_immediate_reward(P, s, a):
+	reward = 0
+	next_states = P[s][a]
+
+	for next_state in next_states:
+		reward += next_state[PROBABILITY] * next_state[REWARD]
+
+	return reward
 
 """
 For policy_evaluation, policy_improvement, policy_iteration and value_iteration,
@@ -56,6 +80,15 @@ def policy_evaluation(P, nS, nA, policy, gamma=0.9, tol=1e-3):
 	############################
 	# YOUR IMPLEMENTATION HERE #
 
+	while True:
+		new_value_function = np.zeros(nS)
+		for s in range(nS):
+			new_value_function[s] = get_immediate_reward(P, s, policy[s]) + gamma * get_future_rewards(P, s, policy[s], value_function)
+
+		if np.linalg.norm(new_value_function - value_function) < tol:
+			break
+
+		value_function = new_value_function
 
 	############################
 	return value_function
@@ -85,7 +118,14 @@ def policy_improvement(P, nS, nA, value_from_policy, policy, gamma=0.9):
 
 	############################
 	# YOUR IMPLEMENTATION HERE #
+	Q_PI_I = np.zeros(shape=(nS,nA))
 
+	for s in range(nS):
+
+		for a in range(nA):
+			Q_PI_I[s, a] = get_immediate_reward(P, s, a) + gamma * get_future_rewards(P, s, a, value_from_policy)
+
+		new_policy[s] = np.argmax(Q_PI_I[s])
 
 	############################
 	return new_policy
@@ -115,7 +155,18 @@ def policy_iteration(P, nS, nA, gamma=0.9, tol=10e-3):
 	############################
 	# YOUR IMPLEMENTATION HERE #
 
+	while True:
+		new_policy = policy_improvement(P, nS, nA, value_function, policy, gamma)
 
+		if np.array_equal(new_policy, policy):
+			break
+
+		value_function = policy_evaluation(P, nS, nA, new_policy, gamma, tol)
+		policy = new_policy
+
+
+	print(policy)
+	print(value_function)
 	############################
 	return value_function, policy
 
@@ -141,6 +192,15 @@ def value_iteration(P, nS, nA, gamma=0.9, tol=1e-3):
 	policy = np.zeros(nS, dtype=int)
 	############################
 	# YOUR IMPLEMENTATION HERE #
+
+
+	while True:
+
+
+		new_value = np.zeros(nS)
+
+		if np.linalg.norm(new_value - value_function) < tol:
+			break
 
 
 	############################
@@ -183,6 +243,7 @@ def render_single(env, policy, max_steps=100):
 if __name__ == "__main__":
 
 	# comment/uncomment these lines to switch between deterministic/stochastic environments
+	# env = gym.make("Deterministic-8x8-FrozenLake-v0")
 	env = gym.make("Deterministic-4x4-FrozenLake-v0")
 	# env = gym.make("Stochastic-4x4-FrozenLake-v0")
 
@@ -191,9 +252,9 @@ if __name__ == "__main__":
 	V_pi, p_pi = policy_iteration(env.P, env.nS, env.nA, gamma=0.9, tol=1e-3)
 	render_single(env, p_pi, 100)
 
-	# print("\n" + "-"*25 + "\nBeginning Value Iteration\n" + "-"*25)
+	print("\n" + "-"*25 + "\nBeginning Value Iteration\n" + "-"*25)
 	#
-	# V_vi, p_vi = value_iteration(env.P, env.nS, env.nA, gamma=0.9, tol=1e-3)
-	# render_single(env, p_vi, 100)
+	V_vi, p_vi = value_iteration(env.P, env.nS, env.nA, gamma=0.9, tol=1e-3)
+	render_single(env, p_vi, 100)
 
 
