@@ -167,6 +167,7 @@ def policy_iteration(P, nS, nA, gamma=0.9, tol=10e-3):
 
 	print(policy)
 	print(value_function)
+	print(np.linalg.norm(value_function))
 	############################
 	return value_function, policy
 
@@ -193,15 +194,28 @@ def value_iteration(P, nS, nA, gamma=0.9, tol=1e-3):
 	############################
 	# YOUR IMPLEMENTATION HERE #
 
+	Q_PI_I = np.zeros(shape=(nS,nA))
 
 	while True:
-
-
 		new_value = np.zeros(nS)
+		new_policy = np.zeros(nS, dtype='int')
+		for s in range(nS):
+			for a in range(nA):
+				Q_PI_I[s, a] = get_immediate_reward(P, s, a) + gamma * get_future_rewards(P, s, a, value_function)
+
+
+			new_policy[s] = int(np.argmax(Q_PI_I[s]))
+			new_value[s] = np.max(Q_PI_I[s])
 
 		if np.linalg.norm(new_value - value_function) < tol:
 			break
 
+		value_function = new_value
+		policy = new_policy
+
+	print(value_function)
+	print(np.linalg.norm(value_function))
+	print(policy)
 
 	############################
 	return value_function, policy
@@ -244,16 +258,14 @@ if __name__ == "__main__":
 
 	# comment/uncomment these lines to switch between deterministic/stochastic environments
 	# env = gym.make("Deterministic-8x8-FrozenLake-v0")
-	env = gym.make("Deterministic-4x4-FrozenLake-v0")
-	# env = gym.make("Stochastic-4x4-FrozenLake-v0")
+	# env = gym.make("Deterministic-4x4-FrozenLake-v0")
+	env = gym.make("Stochastic-4x4-FrozenLake-v0")
 
 	print("\n" + "-"*25 + "\nBeginning Policy Iteration\n" + "-"*25)
-
 	V_pi, p_pi = policy_iteration(env.P, env.nS, env.nA, gamma=0.9, tol=1e-3)
 	render_single(env, p_pi, 100)
 
 	print("\n" + "-"*25 + "\nBeginning Value Iteration\n" + "-"*25)
-	#
 	V_vi, p_vi = value_iteration(env.P, env.nS, env.nA, gamma=0.9, tol=1e-3)
 	render_single(env, p_vi, 100)
 
