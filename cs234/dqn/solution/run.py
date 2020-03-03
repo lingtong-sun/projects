@@ -4,7 +4,7 @@ import random
 import torch
 import numpy as np
 from collections import deque
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 # %matplotlib inline
 
 env = gym.make('LunarLander-v2')
@@ -70,9 +70,9 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.99
 scores = dqn()
 
 # plot the scores
-# fig = plt.figure()
-# ax = fig.add_subplot(111)
-# plt.plot(np.arange(len(scores)), scores)
-# plt.ylabel('Score')
-# plt.xlabel('Episode #')
-# plt.show()
+fig = plt.figure()
+ax = fig.add_subplot(111)
+plt.plot(np.arange(len(scores)), scores)
+plt.ylabel('Score')
+plt.xlabel('Episode #')
+plt.show()
