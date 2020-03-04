@@ -87,6 +87,23 @@ class Agent():
 
         ## TODO: compute and minimize the loss
         "*** YOUR CODE HERE ***"
+        predicted_rewards = self.qnetwork_local(states)
+        predicted_rewards_for_action = torch.gather(predicted_rewards, 1, actions)
+        # print(predicted_rewards)
+        # print(actions)
+        # print(predicted_rewards_for_action)
+       
+        next = self.qnetwork_target(next_states)
+        max_next = torch.max(next, 1)[0].unsqueeze(1)
+        target_rewards = rewards + max_next * gamma * (1 - dones)
+        # print(max_next.shape)
+        # print(target_rewards)
+        # print(next)
+        # print(torch.max(next, 1))
+        loss = F.smooth_l1_loss(predicted_rewards_for_action, target_rewards)
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
 
         # ------------------- update target network ------------------- #
         self.soft_update(self.qnetwork_local, self.qnetwork_target, TAU)                     
